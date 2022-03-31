@@ -1,0 +1,6 @@
+wheel
+Flask
+requests
+prometheus_client
+uwsgi
+pyyaml

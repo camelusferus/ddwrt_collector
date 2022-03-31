@@ -1,0 +1,14 @@
+[Unit]
+Description=Collector of ddwrt metrics for prometheus
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/some/path/where/this/repo/resides/
+VIRTUAL_ENV=/some/path/where/this/repos/resides/path/to/venv
+Environment=PATH=$VIRTUAL_ENV/bin:$PATH
+ExecStart=$VIRTUAL_ENV/bin/uwsgi --http 127.0.0.1:8000 --wsgi-file ddwrt_collector.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
