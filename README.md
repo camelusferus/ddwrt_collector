@@ -13,11 +13,11 @@ pip install -r requirements.txt
 
 Run with uwsgi
 ```
-uwsgi --http 127.0.0.1:8000 --wsgi-file ddwrt_collector.py
+uwsgi --http 127.0.0.1:9920 --wsgi-file ddwrt_collector.py
 ```
 When using authentication to the status page, create ``ddwrt_credentials.yml`` according to the sample.
 
-Collect data by accessing: ``http://127.0.0.1:8000/collect?target=example.org``
+Collect data by accessing: ``http://127.0.0.1:9920/collect?target=example.org``
 
 
 ## Future
