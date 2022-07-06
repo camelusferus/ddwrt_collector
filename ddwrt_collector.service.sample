@@ -3,12 +3,29 @@ Description=Collector of ddwrt metrics for prometheus
 After=network.target
 
 [Service]
+User=nobody
+Group=nogroup
 Type=simple
 WorkingDirectory=/some/path/where/this/repo/resides/
 VIRTUAL_ENV=/some/path/where/this/repos/resides/path/to/venv
 Environment=PATH=$VIRTUAL_ENV/bin:$PATH
 ExecStart=$VIRTUAL_ENV/bin/uwsgi --http 127.0.0.1:9920 --wsgi-file ddwrt_collector.py
 Restart=on-failure
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+DevicePolicy=closed
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=yes
 
 [Install]
 WantedBy=multi-user.target
